@@ -10,6 +10,7 @@ A reusable Agent Skill distilled from repeated iterations on custom wraps for Te
 - [Lessons learned](references/pitfalls.md): failure modes, safeguards, and an acceptance record template
 - [Prompt patterns](references/prompt-patterns.md): generation, targeted repairs, and logo removal
 - [File validator](scripts/validate_wrap.py): PNG / ZIP validation and SHA256 checksums
+- [Template validator](scripts/validate_template.py): exact alpha-silhouette comparison against an official template
 
 The skill instructions, references, and prompt patterns are in English. A Chinese version of the README is available at [简体中文](README.zh-CN.md).
 
@@ -34,6 +35,19 @@ Adjust width and height to match the official template for the specific vehicle.
 The script checks the PNG signature, chunk CRCs, IEND, full decoding, dimensions, file size, and PNG files inside ZIP archives. It outputs SHA256 checksums without modifying the input. Exit code `0` indicates that file validation passed; `1` indicates failure.
 
 Successful decoding does not prove visual completeness or correct UV orientation. Template boundaries, missing artwork, rotation, and mirroring require separate checks. Do not claim that the wrap has been validated on the vehicle unless actual in-car testing has been completed.
+
+## Template silhouette validation
+
+Inspect the original template alpha before prompting: invisible pixels may contain misleading black or white RGB. Generated previews may have the wrong resolution or stray transparent-edge pixels even when they look plausible.
+
+After final export and compression, run:
+
+```bash
+python scripts/validate_template.py --template template.png --candidate output.png
+python scripts/test_validate_template.py
+```
+
+The read-only checker requires matching dimensions and compares every alpha byte. It reports spill pixels, missing opaque pixels, edge differences, and reference island areas. Opaque references require an explicit mask and are rejected. A pass establishes only the 2D silhouette, not artwork completeness, correct vehicle selection, or real in-car orientation. Keep raw previews separate from validated upload files.
 
 ## Scope
 
