@@ -13,3 +13,11 @@ Modify only [SPECIFIC ISSUE] on [SPECIFIED FILE AND UV PANEL]. Apply [SPECIFIED 
 ## Removing Tesla Logos
 
 Remove the Tesla T graphic and TESLA wordmark from all UV islands, patching with the surrounding base texture; keep themed badges, decorative lines, and dinosaur/fossil artwork. Do not add any brand marks. Check island by island for residue and accidental deletions.
+
+## Template alpha and export constraints
+
+Before using a prompt, inspect the source alpha; do not describe hidden RGB as real paint. If the template has transparent gaps, request a genuinely transparent PNG. Explicitly preserve door seams, mirrors, skinny pillars, and separated bumper islands. Treat the requested resolution as a target that still needs byte-level verification.
+
+For orientation-unverified fantasy or cultivation themes, prefer a radial sword array on a verified broad island and non-directional cloud/energy patterns on side islands. Do not infer that every landscape should be upright on the flat atlas.
+
+For cleanup, keep the selected artwork and ask only for the identified correction. Afterward run both validators; an alpha repair may leave stray translucent pixels or distort an island even if the thumbnail looks acceptable.

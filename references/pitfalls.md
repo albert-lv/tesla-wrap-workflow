@@ -25,3 +25,13 @@ These symptoms only prove an observed problem — they do not prove the root cau
 - Panel orientation evidence and unverified items:
 - Real in-car testing: completed / not completed
 - Post-save read-back: completed / unavailable
+
+## Production checks added after an end-to-end trial
+
+- A raw image requested at 1024 x 1024 arrived at 1254 x 1254 and over 1 MB. Requested settings are not acceptance evidence; validate the actual export.
+- The official template contained hidden white and black RGB in pixels with zero alpha. Inspecting only the displayed image misidentified them as a border or background. Read alpha first.
+- Generated transparency contained stray pixels and changed edges. Full PNG decoding cannot detect this. Compare the candidate alpha against the original template after compression.
+- Matching alpha does not prove that paint fills every island correctly. Inspect internal dark slivers, subject cropping, and missing content separately, using light and dark preview backgrounds where supported.
+- Avoid repeated whole-image regeneration just to fix export defects. Keep the approved artwork; use the permitted technical export path and repeat the relevant checks.
+
+Run the checker regression cases with `python scripts/test_validate_template.py`. They exercise missing small islands, stray translucent pixels, changed antialiasing, opaque output, dimension mismatch, and unsupported opaque references. The tests do not establish on-car orientation.
