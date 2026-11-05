@@ -11,7 +11,7 @@ A reusable Agent Skill distilled from repeated iterations on custom wraps for Te
 - [Prompt patterns](references/prompt-patterns.md): generation, targeted repairs, and logo removal
 - [File validator](scripts/validate_wrap.py): PNG / ZIP validation and SHA256 checksums
 
-The skill instructions, references, and prompt patterns are currently in Chinese. For the Chinese README, see [简体中文](README.zh-CN.md).
+The skill instructions, references, and prompt patterns are in English. A Chinese version of the README is available at [简体中文](README.zh-CN.md).
 
 ## Usage
 

@@ -1,56 +1,56 @@
 ---
 name: tesla-wrap-workflow
-description: 制作、修改或修复特斯拉车机自定义涂装 PNG（UV 展开贴图），处理车型模板、上车朝向、镜像数字、去车标、图案裁切、图片不完整、1 MB 大小限制及批量 ZIP 交付。用户要求 Tesla custom wraps、Model Y 涂装或修改已有涂装时使用；不适用于实体车衣生产刀模或仅生成汽车效果照片。
+description: Create, modify, or repair Tesla in-car custom wrap PNGs (UV unwrapped textures) — handling vehicle template selection, on-car orientation, mirrored numerals, logo removal, graphic cropping, incomplete images, the 1 MB per-image limit, and batch ZIP delivery. Use when the user asks for Tesla custom wraps, Model Y wraps, or editing an existing wrap; not for physical vinyl production cutter templates or for generating car render photos only.
 ---
 
-# 特斯拉车机涂装工作流
+# Tesla In-Car Wrap Workflow
 
-将用户的主题变成可检查的车机 UV 贴图。把“画得好看”“文件有效”“模板匹配”“上车方向正确”作为四个独立目标，不用生成效果图代替实际验证。
+Turn the user's theme into an inspectable in-car UV texture. Treat "looks good", "file is valid", "template matches", and "correct orientation on the car" as four separate goals — do not substitute render photos for actual verification.
 
-## 1. 固定输入与验收条件
+## 1. Fixed Inputs and Acceptance Criteria
 
-- 从上下文提取车型、年份、具体版本、主题、数量、图标政策和每张文件上限。最新明确修改覆盖旧要求；例如“全部去掉特斯拉车标”覆盖此前“保留车标”，但不等于删除主题徽章。
-- 查阅官方仓库 https://github.com/teslamotors/custom-wraps 的现行说明，取得匹配车型版本的原始模板。不要仅凭年份推定 Premium、Standard、Performance 或长轴版相同。
-- 输入不足时先完成主题方案；缺少关键车型或原模板才询问。截图可以说明缺陷，不能充当精确刀模。已有可读源文件时不要要求重复上传。
-- 默认将“1 MB”解释为每张 PNG 不超过 1,000,000 字节；若用户要求严格“小于 1 MB”，将校验上限设为 999999。ZIP 总体积单独报告。不要把旧软件版本、尺寸范围或上传数量当成永久规则。
-- 将当前约束记录在批次清单中，列出文件名、主题、模板来源、尺寸、图标要求和待验证朝向。禁止把个人聊天截图、账户信息或私人文件路径写入公开发布材料。
+- Extract from context: vehicle model, year, exact variant, theme, quantity, logo policy, and per-file size limit. The latest explicit instruction overrides earlier ones; e.g. "remove all Tesla logos" overrides an earlier "keep the logos", but that does not mean removing themed badges.
+- Consult the current instructions in the official repository https://github.com/teslamotors/custom-wraps and obtain the original template for the matching model and variant. Do not assume Premium, Standard, Performance, or long-range variants share a template based on year alone.
+- If inputs are insufficient, complete the theme design first; ask only when a key vehicle detail or the original template is missing. Screenshots can illustrate defects but cannot serve as precise cutter templates. When a readable source file already exists, do not ask the user to re-upload it.
+- By default interpret "1 MB" as no more than 1,000,000 bytes per PNG; if the user demands strictly "less than 1 MB", set the validation limit to 999999. Report the total ZIP size separately. Do not treat old software versions, dimension ranges, or upload counts as permanent rules.
+- Record current constraints in a batch manifest listing file name, theme, template source, dimensions, logo requirements, and orientation status to be verified. Never write personal chat screenshots, account information, or private file paths into publicly released material.
 
-## 2. 先建立面板与朝向映射
+## 2. Establish Panel and Orientation Mapping First
 
-- 读取原模板，识别车头、车尾、两侧、后视镜等 UV 岛及留空区。中央大黑区可能是空洞，不可自行补成车顶。保留细柱、镜片等小岛。
-- 为方向敏感图案记录：所在 UV 岛、车辆前向、上边方向、旋转、是否镜像、证据来源、验证状态。
-- 通过官方示例、可信模型的 UV 对应关系或用户车机实测确定方向。左右侧可能需要不同旋转，但不能把未经验证的“左 90°、右 -90°”或“引擎盖一律 180°”写成规则。
-- 数字和文字不能随图形整体镜像；旋转和镜像分别处理。化石头像、恐龙头、徽章按上车观看方向确认，不能以平面预览中正立为验收依据。
-- 没有可靠映射时先用无方向纹理，或提供明确标为待验证的方向测试稿。不能声称已经验证上车效果。
+- Read the original template; identify UV islands for front, rear, both sides, mirrors, and blank areas. A large black central area may be an empty void — do not fill it in as a roof. Preserve small islands such as pillars and mirror shells.
+- For orientation-sensitive graphics record: UV island, vehicle forward direction, up direction, rotation, whether mirrored, evidence source, and verification status.
+- Determine orientation from official examples, UV correspondences from trusted models, or user in-car testing. Left and right sides may need different rotations, but do not codify unverified rules such as "left 90°, right -90°" or "hood is always 180°".
+- Digits and text must not be mirrored along with the overall graphic; handle rotation and mirroring separately. Fossil heads, dinosaur heads, and badges must be confirmed in on-car viewing orientation — a motif that looks upright in a flat preview does not meet acceptance.
+- Without a reliable mapping, use non-directional textures first, or deliver direction-test versions clearly labeled as unverified. Do not claim verified on-car results.
 
-## 3. 生成与局部修改
+## 3. Generation and Localized Editing
 
-使用可用图像生成工具创作或编辑；遵守该工具对参考图、透明度和编辑方式的要求。提示范例见 [references/prompt-patterns.md](references/prompt-patterns.md)。
+Use available image generation tools to create or edit; follow each tool's requirements for reference images, transparency, and editing methods. Prompt examples are in [references/prompt-patterns.md](references/prompt-patterns.md).
 
-- 使用原始模板作为结构参考，主题设计放在 UV 岛内。保持画布比例、岛位置、缝隙、留空区和透明度；不要生成车身照片、手机界面或拼图替代纹理文件。
-- 提示词无法保证像素级模板锁定。生成后必须检查边界；需要精确蒙版合成时，按工具及用户授权使用确定性处理，禁止把近似 AI 轮廓称为官方模板精确匹配。
-- 头部、圆章、文字放在面板安全区，避开轮拱和裁切边缘。跨接缝图案只有在 UV 连续关系确认后才能安排。
-- 局部修复只改变指定部分；例如移除特斯拉 T 标及字标，但保留恐龙主题徽章、配色与线条。修改后检查是否误改其他区域。
-- 批量输出按清单逐张保存，不把多款塞进一张拼图作为可上传成品。完整保留原始源图。
+- Use the original template as the structural reference; place themed designs inside UV islands. Preserve canvas aspect ratio, island positions, gaps, blank areas, and transparency; do not produce car photos, phone UI screenshots, or collages in place of texture files.
+- Prompts cannot guarantee pixel-level template locking. Always check boundaries after generation; when precise mask compositing is needed, use deterministic processing per the tool and with user authorization — do not call approximate AI outlines an exact match to the official template.
+- Place heads, roundels, and text inside panel safe zones, away from wheel arches and cut edges. Plan cross-seam patterns only after UV continuity is confirmed.
+- Localized repairs change only the specified part; e.g. remove the Tesla T emblem and wordmark while keeping the dinosaur badge, colors, and lines. After editing, check that no other region was accidentally altered.
+- Batch output: save file by file per the manifest; do not pack multiple designs into one collage as a deliverable. Keep original source images fully intact.
 
-## 4. 导出与验证
+## 4. Export and Validation
 
-详细失败模式见 [references/pitfalls.md](references/pitfalls.md)。
+Detailed failure modes are in [references/pitfalls.md](references/pitfalls.md).
 
-1. 从完整源图导出匹配当前官方尺寸的 PNG。先无损优化，必要时减少调色板颜色；检查渐变色带和细节损失。禁止把 JPEG 改名为 PNG。
-2. 写入临时文件，完整编码后原子替换目标；文件名保持唯一版本，避免并发覆盖。不启用“允许截断图片加载”掩盖损坏。
-3. 对最终交付文件运行：
+1. Export PNGs from the complete source image at the current official dimensions. Optimize losslessly first; reduce palette colors only if necessary; check gradient banding and detail loss. Renaming a JPEG to PNG is forbidden.
+2. Write to a temporary file, fully encode, then atomically replace the target; keep file names uniquely versioned to avoid concurrent overwrites. Do not enable "allow truncated image loading" to mask corruption.
+3. Run on final deliverables:
    ```bash
    python scripts/validate_wrap.py output.png --width 1024 --height 1024 --max-bytes 1000000
    python scripts/validate_wrap.py batch.zip --width 1024 --height 1024 --max-bytes 1000000
    ```
-   宽高参数必须替换为实际验收尺寸。依赖 Python 3 和 Pillow。脚本仅读取文件，不修改图片；检查 PNG 签名、块 CRC、IEND、完整解码、尺寸、大小及 ZIP 内每张 PNG，输出 SHA256。它不验证车型、模板边界或图案方向。
-4. 分别对模板边界、留空区、裁切和车标进行视觉/蒙版检查。有效 PNG 也可能下半部空白、透明或内容遗漏；必须与完整源图比对可见内容，完整解码不等于画面完整。记录使用方法，不把文件校验通过当成 UV 校验通过。
-5. 打包后重新打开 ZIP，验证其内部最终字节。上传/保存后如能读回，再对照 SHA256 和解码结果；无法读回则明确未验证该阶段。不要声称已经定位截断根因。
+   Replace width and height with the actual acceptance dimensions. Requires Python 3 and Pillow. The script is read-only — it never modifies images; it checks PNG signature, chunk CRCs, IEND, full decode, dimensions, byte size, and every PNG inside ZIP archives, and outputs SHA256. It does not validate vehicle model, template boundaries, or graphic orientation.
+4. Separately perform visual/mask checks on template boundaries, blank areas, cropping, and logos. A valid PNG may still have an empty lower half, unwanted transparency, or missing content; compare visible content against the complete source image — full decode does not mean a complete picture. Record the method used; never treat file validation as UV validation.
+5. After packaging, reopen the ZIP and verify the final bytes inside. After upload/save, if read-back is possible, compare SHA256 and decode results again; if read-back is not possible, state that this stage is unverified. Do not claim to have located the root cause of truncation.
 
-## 5. 交付与迭代
+## 5. Delivery and Iteration
 
-- 交付逐张图片及用户需要的 ZIP，按工具规定保存并给出可用链接。
-- 简述款数、单图体积，以及三层状态：文件格式、模板几何、真实车机映射。只声明实际通过的检查；未进行车机测试就明确说明。
-- 收到“第二张反了/不完整”时，定位具体文件和面板，检查最终字节，再修复对应原因；不盲目重做全部。但“全部去标”等批次要求必须覆盖整批，局部缺陷修复与全批修改分开执行。
-- 用户要求公开发布流程时，只发布通用说明、原创代码与示例提示；引用官方模板来源，不把未经授权的资产或个人记录打包发布。
+- Deliver individual images plus a ZIP if the user needs one, saved and linked per the tool's delivery rules.
+- Summarize: number of designs, per-image size, and the three-layer status: file format, template geometry, real in-car mapping. Claim only checks actually performed; if no in-car testing was done, say so explicitly.
+- On "the second image is flipped / incomplete", locate the specific file and panel, check the final bytes, then fix the actual cause; do not blindly redo everything. But batch requirements such as "remove all logos" must cover the whole batch — keep localized defect fixes separate from full-batch changes.
+- When the user asks to publish the workflow publicly, release only generic instructions, original code, and example prompts; cite official template sources, and do not bundle unauthorized assets or personal records.

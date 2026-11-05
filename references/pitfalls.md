@@ -1,27 +1,27 @@
-# 失败模式与防线
+# Failure Modes and Safeguards
 
-| 现象 | 不可靠处理 | 正确防线 |
+| Symptom | Unreliable handling | Correct safeguard |
 |---|---|---|
-| 07、11 或化石头像上车倒置 | 把整个画布旋转 180° | 定位 UV 岛，区分旋转/镜像，基于映射验证 |
-| 平面图正立但车侧倒置 | 只看展开图 | 以车辆实际观看视角验收；未实测就标待验证 |
-| 图片下半截缺失 | 强行解码截断文件、补白 | 从完整源重新编码，检查 IEND/CRC/全量解码和最终文件 |
-| 生图改变模板 | 认为提示“保持模板”就足够 | 对照原始边界与留空区；必要时精确蒙版处理 |
-| 化石头像被轮拱切掉 | 只检查整体构图 | 给方向敏感主体预留面板安全区 |
-| 去车标时主题徽章也消失 | 把所有标志一并删掉 | 明确特斯拉 T 标/字标与主题图案的区别 |
-| 文件超过 1 MB | 看分辨率估算大小 | 检测最终字节，优化编码，检查压缩后的画质 |
-| 本地有效但 ZIP 中损坏 | 只测打包前文件 | 重新读取 ZIP 内文件并全量解码，比对哈希 |
-| 交付链接失效 | 引用旧临时路径或不存在的文件 | 按当前工具保存流程交付，必要时读回验证 |
-| 一次修正引发风格变化 | 全图无约束重生 | 保留源图，限定修改区域，比较改动范围 |
+| 07, 11, or fossil head upside down on the car | Rotate the whole canvas 180° | Locate the UV island, distinguish rotation vs. mirroring, verify against the mapping |
+| Flat preview upright but side panel upside down on the car | Only view the flattened texture | Accept based on the actual on-car viewing angle; mark unverified when not tested |
+| Lower half of image missing | Force-decode the truncated file or pad with white | Re-encode from the complete source; check IEND/CRC/full decode and the final file |
+| Generation alters the template | Assume a prompt saying "keep the template" is enough | Compare against original boundaries and blank areas; use precise mask compositing when needed |
+| Fossil head clipped by a wheel arch | Only check overall composition | Reserve panel safe zones for orientation-sensitive subjects |
+| Theme badge disappears during logo removal | Delete every logo indiscriminately | Distinguish the Tesla T emblem/wordmark from themed artwork |
+| File exceeds 1 MB | Estimate size by resolution | Check final bytes, optimize encoding, inspect compressed quality |
+| Valid locally but corrupt inside the ZIP | Only test files before packaging | Re-read files inside the ZIP, fully decode, compare hashes |
+| Delivery link broken | Reference old temp paths or nonexistent files | Deliver through the current tool's save flow; read back to verify when possible |
+| One fix changes the overall style | Regenerate the whole image unconstrained | Keep the source image, constrain the edit region, compare the change scope |
 
-这些现象只证明观察到的问题，不证明其根因一定是编码、传输或模型。先收集证据，再归因。
+These symptoms only prove an observed problem — they do not prove the root cause is encoding, transmission, or the model. Gather evidence first, then attribute the cause.
 
-## 验收记录模板
+## Acceptance Record Template
 
-- 文件 / 主题 / 版本：
-- 车型、版本、模板 URL 与取得日期：
-- 尺寸 / 字节 / SHA256：
-- PNG 和 ZIP 校验结果：
-- 模板边界及留空区检查方式与结果：
-- 面板方向证据及未验证项：
-- 实际车机测试：已完成 / 未完成
-- 保存后读回：已完成 / 不可用
+- File / theme / version:
+- Vehicle model, variant, template URL and retrieval date:
+- Dimensions / bytes / SHA256:
+- PNG and ZIP validation results:
+- Template boundary and blank-area check method and results:
+- Panel orientation evidence and unverified items:
+- Real in-car testing: completed / not completed
+- Post-save read-back: completed / unavailable

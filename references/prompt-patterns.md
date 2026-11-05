@@ -1,15 +1,15 @@
-# 提示范例
+# Prompt Patterns
 
-## 新主题
+## New Theme
 
-以附带的已确认车型官方 UV 模板为结构参考，为每个 UV 岛设计【主题】涂装。输出单张完整平面纹理。保留画布比例、所有岛位置、空洞、缝隙与透明区域；不能新增车顶区域。主体避开轮拱与接缝。依据已验证面板朝向表放置【图案】；未验证的面板只使用无方向纹理。【车标要求】。不要添加用户没有要求的数字、文字或品牌标识。
+Using the attached official UV template for the confirmed vehicle variant as the structural reference, design a [THEME] wrap for each UV island. Output a single complete flat texture. Preserve the canvas aspect ratio, all island positions, voids, gaps, and transparent areas; do not add a roof area. Keep subjects away from wheel arches and seams. Place [MOTIFS] according to the verified panel orientation table; use non-directional textures on unverified panels. [LOGO REQUIREMENTS]. Do not add numbers, text, or brand marks the user did not request.
 
-此提示不能替代几何验证；没有附带精确模板时不得称为可直接上传的成品。
+This prompt cannot replace geometric verification; without an attached precise template, do not call the result a ready-to-upload deliverable.
 
-## 局部修复
+## Localized Repair
 
-仅修改【指定文件与 UV 面板】上的【具体问题】。依据【朝向证据】执行【指定旋转或镜像修正】。保持其他岛、图案、配色、留空区与画布尺寸。不要整体旋转整张贴图。输出后检查目标主体与其他区域。
+Modify only [SPECIFIC ISSUE] on [SPECIFIED FILE AND UV PANEL]. Apply [SPECIFIED ROTATION OR MIRRORING FIX] based on [ORIENTATION EVIDENCE]. Keep all other islands, motifs, colors, blank areas, and canvas dimensions unchanged. Do not rotate the entire texture. After output, check both the target subject and the surrounding areas.
 
-## 去除特斯拉标志
+## Removing Tesla Logos
 
-移除所有 UV 岛上的特斯拉 T 图形及 TESLA 字标，用周围一致的底纹修补；保留主题徽章、装饰线、恐龙/化石图案。不要新增品牌标志。逐岛检查残留与误删。
+Remove the Tesla T graphic and TESLA wordmark from all UV islands, patching with the surrounding base texture; keep themed badges, decorative lines, and dinosaur/fossil artwork. Do not add any brand marks. Check island by island for residue and accidental deletions.
