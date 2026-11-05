@@ -1,0 +1,6 @@
+interface:
+  display_name: "特斯拉涂装工作流"
+  short_description: "按官方模板制作车机涂装，检查图案朝向、完整性及文件大小，避免反复返工"
+  default_prompt: "使用 $tesla-wrap-workflow 制作并检查我的特斯拉车机自定义涂装。"
+policy:
+  allow_implicit_invocation: true
