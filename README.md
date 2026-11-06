@@ -14,6 +14,17 @@ A reusable Agent Skill distilled from repeated iterations on custom wraps for Te
 
 The skill instructions, references, and prompt patterns are in English. A Chinese version of the README is available at [简体中文](README.zh-CN.md).
 
+## Example wraps
+
+Two complete PNG examples for the **Model Y (2025+) Premium** template. Both are 1024 × 1024, below 1,000,000 bytes, and contain no Tesla logos. Match your exact vehicle variant before use.
+
+| Jade Sword Array | Midnight Pumpkin Parade — orientation revision |
+| --- | --- |
+| [![Jade Sword Array](examples/FanRen_JadeSword_Y25.png)](examples/FanRen_JadeSword_Y25.png?raw=true) | [![Midnight Pumpkin Parade](examples/Halloween_Pumpkin_Y25_v2.png)](examples/Halloween_Pumpkin_Y25_v2.png?raw=true) |
+| [Download PNG](examples/FanRen_JadeSword_Y25.png?raw=true) · 725,919 bytes | [Download PNG](examples/Halloween_Pumpkin_Y25_v2.png?raw=true) · 831,588 bytes |
+
+File decoding, size, and exact template-alpha checks passed. The Halloween revision turns the hood composition toward the front viewer and aligns side motifs with the inward-facing orientation shown in Tesla's examples. **Neither image has been tested on an actual vehicle.** See [example details and validation](examples/README.md) for the evidence and limits.
+
 ## Usage
 
 Load this repository as a complete skill directory using the mechanism supported by your Agent platform. Example request:

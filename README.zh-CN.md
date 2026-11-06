@@ -12,7 +12,18 @@
 - [文件校验脚本](scripts/validate_wrap.py)：PNG / ZIP 校验与 SHA256
 - [模板校验脚本](scripts/validate_template.py)：与官方模板逐像素比较透明轮廓
 
-当前 skill 正文、参考文档和提示模板为中文；英文说明见 [English README](README.md)。
+当前 skill 正文、参考文档和提示模板使用英文；本页提供独立中文说明，默认入口为 [English README](README.md)。
+
+## 涂装示例
+
+以下两张完整 PNG 使用 **Model Y (2025+) Premium** 模板，均为 1024 × 1024、小于 1,000,000 字节，且不含特斯拉车标。使用前请确认具体车型版本一致。
+
+| 青竹剑阵·碧玉灵光 | 午夜南瓜巡游——方向修订版 |
+| --- | --- |
+| [![青竹剑阵·碧玉灵光](examples/FanRen_JadeSword_Y25.png)](examples/FanRen_JadeSword_Y25.png?raw=true) | [![午夜南瓜巡游](examples/Halloween_Pumpkin_Y25_v2.png)](examples/Halloween_Pumpkin_Y25_v2.png?raw=true) |
+| [下载 PNG](examples/FanRen_JadeSword_Y25.png?raw=true) · 725,919 字节 | [下载 PNG](examples/Halloween_Pumpkin_Y25_v2.png?raw=true) · 831,588 字节 |
+
+文件完整解码、尺寸、大小及模板透明轮廓检查均已通过。万圣节修订版将前盖主体转为面向车头观看，并按 Tesla 示例中左右侧朝向画布内侧的方式调整图案。**两张均尚未进行实际车机测试。** 依据与验证范围见[示例说明](examples/README.md)。
 
 ## 使用
 
